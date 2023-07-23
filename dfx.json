@@ -1,0 +1,29 @@
+{
+  "canisters": {
+    "animas_dream_backend": {
+      "main": "src/animas_dream_backend/main.mo",
+      "type": "motoko"
+    },
+    "animas_dream_frontend": {
+      "dependencies": [
+        "animas_dream_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/animas_dream_frontend/src/index.html"
+      },
+      "source": [
+        "src/animas_dream_frontend/assets",
+        "dist/animas_dream_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
