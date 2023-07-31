@@ -6,6 +6,15 @@ import Time "mo:base/Time";
 module {
     //Tiempo
     public type Time = Time.Time;
+    
+    //typo de Autenticacion
+    public type WorldCoin = {
+       merkle_root: Text;
+       nullifier_hash: Text;
+       proof: Text;
+       credential_type: Text;
+    };
+
 
     //User Perfil
     public type UserProfile = {

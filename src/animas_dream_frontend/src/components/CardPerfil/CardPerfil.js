@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./cardPerfil.css";
 
-export const CardPerfil = () => {
+export const CardPerfil = ({principal, isConnected}) => {
   //multiplico la rotacion por la cantidad de letras
   const letras = () => {
     let text = document.querySelector(".spinning-text p");
@@ -13,16 +13,18 @@ export const CardPerfil = () => {
 
   useEffect(() => {
     letras();
-  }, []);
+  }, [isConnected]);
 
   return (
-    <div className="tarjeta-padre">
-      <div className="w-[250px] h-[350px] bg-slate-300 rounded-md flex items-center justify-center relative tarjeta">
+    <div className={`tarjeta-padre ${isConnected ? "text-slate-400" : ""}`}>
+      <div className={`w-[250px] h-[350px] ${ isConnected ? "bg-black" : "bg-slate-300"} rounded-md flex items-center justify-center relative tarjeta`}>
         <div className="tarjeta-frente">
           <div className="flex flex-col items-center justify-center gap-3 absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] w-full">
             <div className="spinning-text-wrapper">
               <div className="spinning-text">
-                <p>NO - VERIFICADO</p>
+                {
+                isConnected ? <p>VERIFICADO</p> : <p>NO - VERIFICADO</p>
+                }
               </div>
               <div className="w-[50px] h-[50px] rounded-full border-slate-300 border-[1px] shadow-interno"></div>
             </div>
@@ -49,9 +51,9 @@ export const CardPerfil = () => {
           </div>
         </div>
 
-        <div className="tarjeta-dorso bg-slate-300 overflow-hidden">
-            <div className="w-[350px] bg-slate-500 -rotate-90 absolute top-[50%] left-6 -translate-y-[50%] -translate-x-[50%] p-2">
-              <p className="text-[12px] text-slate-300 w-[300px]">Internet identity que nos proporciona IC con su sistema de logue</p>
+        <div className={`tarjeta-dorso ${ isConnected ? "bg-black" : "bg-slate-300"}  overflow-hidden`}>
+            <div className="w-[350px] h-[15%] bg-slate-500 -rotate-90 absolute top-[50%] left-6 -translate-y-[50%] -translate-x-[50%] flex items-center px-3">
+              <p className="text-[12px] text-slate-300 w-[300px] uppercase">{isConnected ? principal : "NO POSEES IDENTIDAD NECESITAS LOGUEAR"}</p>
             </div>
         </div>
       </div>
